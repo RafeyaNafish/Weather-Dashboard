@@ -21,7 +21,7 @@ const App = () => {
   const [unit, setUnit] = useState("C");
   const [error, setError] = useState("");
 
-  const API_KEY = "34a343533d87c42145779434586cc076";
+  const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 
   useEffect(() => {
     if (city.trim().length >= 3 && !weather) {
@@ -34,7 +34,7 @@ const App = () => {
   const fetchSuggestions = async (query) => {
     try {
       const res = await fetch(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${API_KEY}`,
+        `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${API_KEY}`,
       );
       if (!res.ok) return setSuggestion([]);
       setSuggestion(await res.json());
@@ -65,7 +65,7 @@ const App = () => {
     }
 
     fetchWeatherData(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city.trim()}&appid=${API_KEY}&units=metric`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${city.trim()}&appid=${API_KEY}&units=metric`,
     );
   };
 
@@ -103,7 +103,7 @@ const App = () => {
                       className="block w-full text-left px-4 py-2 hover:bg-blue-600"
                       onClick={() =>
                         fetchWeatherData(
-                          `http://api.openweathermap.org/data/2.5/weather?lat=${s.lat}&lon=${s.lon}&appid=${API_KEY}&units=metric`,
+                          `https://api.openweathermap.org/data/2.5/weather?lat=${s.lat}&lon=${s.lon}&appid=${API_KEY}&units=metric`,
                           s.name,
                         )
                       }
@@ -116,7 +116,7 @@ const App = () => {
 
               <button
                 type="submit"
-                className="w-full mt-4 bg-blue-600 hover:bg-blue-700 py-2 rounded"
+                className="w-full mt-4 text-white bg-blue-600 hover:bg-blue-700 py-2 rounded"
               >
                 Get Weather
               </button>

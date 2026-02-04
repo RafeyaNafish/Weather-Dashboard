@@ -1,107 +1,181 @@
-````markdown
-# 🌤 React Weather App
+# ☀️ Weather Dashboard
 
-A modern **React Weather App** that provides real-time weather updates for any city worldwide. It features city suggestions, temperature conversion (°C/°F), and detailed weather information including humidity, wind, visibility, sunrise, sunset, feels like temperature, and pressure.
+A beautiful, real-time weather application built with React and Vite, featuring dynamic weather backgrounds and comprehensive weather information.
 
----
+![Weather Dashboard](https://img.shields.io/badge/React-19.2.0-blue) ![Vite](https://img.shields.io/badge/Vite-7.2.4-purple) ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.1.18-teal)
 
-## 📝 Features
+## ✨ Features
 
-- **Search for cities** with auto-suggestions after typing at least 3 characters.
-- **Temperature conversion** between Celsius (°C) and Fahrenheit (°F) in a single button.
-- **Weather details** including:
-  - Temperature & feels like temperature
-  - Weather description
-  - Humidity, wind, visibility
-  - Sunrise & sunset times
-  - Atmospheric pressure
-- **Animated weather icons** for a lively user experience.
-- **Responsive design** that looks good on both desktop and mobile.
-- **Error handling** for invalid city names or API issues.
+- 🔍 **Smart City Search** - Autocomplete suggestions as you type
+- 🌡️ **Temperature Conversion** - Toggle between Celsius and Fahrenheit
+- 🎨 **Dynamic Backgrounds** - Changes based on weather conditions
+- 📊 **Comprehensive Data** - Humidity, wind speed, visibility, sunrise/sunset times
+- 📱 **Responsive Design** - Works seamlessly on all devices
+- ⚡ **Fast & Lightweight** - Built with Vite for optimal performance
 
----
+## 🚀 Quick Start
 
-## 💻 Technologies Used
+### Prerequisites
 
-- **Frontend:** React, Tailwind CSS
+- Node.js (v16 or higher)
+- npm or yarn
+- OpenWeatherMap API key ([Get one free here](https://openweathermap.org/api))
+
+### Local Development
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd Weather-Dashboard
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   # Copy the example file
+   cp .env.example .env
+   ```
+   
+   Then open `.env` and add your OpenWeatherMap API key:
+   ```env
+   VITE_OPENWEATHER_API_KEY=your_actual_api_key_here
+   ```
+
+4. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+5. Open your browser at `http://localhost:5173`
+
+## 📦 Build for Production
+
+```bash
+npm run build
+```
+
+The production-ready files will be in the `dist` folder.
+
+## 🌐 Deploy to Vercel
+
+### Option 1: Deploy via Vercel Dashboard (Recommended)
+
+1. **Push your code to GitHub** (make sure `.env` is in `.gitignore`)
+   ```bash
+   git add .
+   git commit -m "Ready for deployment"
+   git push origin main
+   ```
+
+2. **Go to [Vercel](https://vercel.com)** and sign in
+
+3. **Click "New Project"** and import your repository
+
+4. **Configure Environment Variables:**
+   - Click on "Environment Variables"
+   - Add: `VITE_OPENWEATHER_API_KEY` with your API key
+   - Make sure it's available for Production, Preview, and Development
+
+5. **Deploy!** Vercel will automatically:
+   - Install dependencies
+   - Build your project
+   - Deploy to a production URL
+
+### Option 2: Deploy via Vercel CLI
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Login to Vercel
+vercel login
+
+# Deploy
+vercel
+
+# Follow the prompts and add your environment variable when asked
+```
+
+### Adding Environment Variables on Vercel
+
+After deployment, you can manage environment variables:
+
+1. Go to your project on Vercel
+2. Navigate to **Settings** → **Environment Variables**
+3. Add `VITE_OPENWEATHER_API_KEY` with your API key value
+4. Redeploy if needed
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework:** React 19.2.0
+- **Build Tool:** Vite 7.2.4
+- **Styling:** TailwindCSS 4.1.18
 - **API:** OpenWeatherMap API
-- **Icons:** Custom SVG React components
-- **Helper Functions:** Temperature conversion, wind direction, humidity & visibility interpretation
+- **Deployment:** Vercel
 
----
+## 📁 Project Structure
 
-## 🚀 Installation
-
-1. **Clone the repository:**
-
-```bash
-git clone https://github.com/RafeyaNafish/Weather-Dashboard
-cd react-weather-app
 ```
-````
-
-2. **Install dependencies:**
-
-```bash
-npm install
+Weather-Dashboard/
+├── public/          # Static assets
+├── src/
+│   ├── components/  # React components
+│   ├── App.jsx      # Main app component
+│   └── index.css    # Global styles
+├── .env.example     # Environment variables template
+├── .gitignore       # Git ignore rules
+├── vercel.json      # Vercel configuration
+└── package.json     # Dependencies and scripts
 ```
 
-3. **Create a `.env` file** (optional) and add your OpenWeatherMap API key:
+## 🔐 Environment Variables
 
-```env
-REACT_APP_WEATHER_API_KEY=your_api_key_here
-```
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `VITE_OPENWEATHER_API_KEY` | Your OpenWeatherMap API key | Yes |
 
-4. **Start the development server:**
+## 🎯 Available Scripts
 
-```bash
-npm start
-```
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint |
 
-The app should now be running at [http://localhost:3000](http://localhost:3000).
+## 🔒 Security Notes
 
----
+- ✅ API key is stored in environment variables
+- ✅ `.env` files are excluded from Git
+- ✅ All API calls use HTTPS
+- ✅ No sensitive data in client-side code
 
-## 📦 Usage
+## 🐛 Troubleshooting
 
-1. Enter a city name in the search bar.
-2. Click **Get Weather** or select a suggestion.
-3. Switch between **°C** and **°F** using the toggle button next to the city name.
-4. View detailed weather data including:
-   - Humidity, wind, visibility
-   - Sunrise & sunset times
-   - Feels like temperature and pressure
+### API Key Not Working
+- Make sure your `.env` file exists and has the correct variable name: `VITE_OPENWEATHER_API_KEY`
+- Restart the development server after adding environment variables
+- Check that your API key is valid at [OpenWeatherMap](https://openweathermap.org/)
 
-5. Click **New Search** to look up another city.
+### Build Errors on Vercel
+- Ensure `VITE_OPENWEATHER_API_KEY` is added in Vercel's environment variables
+- Check that the variable is available for the correct environment (Production/Preview)
 
----
-
-## ⚙️ API Reference
-
-- **OpenWeatherMap Geocoding API:** For city suggestions
-  `http://api.openweathermap.org/geo/1.0/direct?q={city name}&limit=5&appid={API_KEY}`
-- **OpenWeatherMap Weather API:** For current weather
-  `http://api.openweathermap.org/data/2.5/weather?lat=${s.lat}&lon=${s.lon}&appid=${API_KEY}&units=metric`
-
----
-
-## 🌟 Future Improvements
-
-- Add **7-day weather forecast**
-- Implement **dark/light mode toggle**
-- Add **unit conversion** for wind speed (m/s ↔ km/h)
-- Add **loading animations** while fetching data
-
----
+### Mixed Content Errors
+- All API calls now use HTTPS - make sure you haven't modified them
 
 ## 📄 License
 
-This project is **MIT Licensed**.
+This project is open source and available under the MIT License.
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
 
 ---
 
-**Made with ❤️ using React and OpenWeatherMap API**
-
-```
-
-```
+**Built with ❤️ using React and Vite**
